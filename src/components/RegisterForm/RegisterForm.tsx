@@ -22,6 +22,10 @@ const Form = () => {
 			redirect: false,
 		});
 
+		if (res && !res.error) {
+			router.replace('/');
+		}
+
 		console.log(res);
 	};
 

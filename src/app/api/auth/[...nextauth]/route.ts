@@ -23,12 +23,12 @@ export const authOptions: NextAuthOptions = {
 
 				const user = await prisma.user.findFirst({
 					where: {
-						name: 'admin',
+						name: name,
 					},
 				});
 
-				if (user) {
-					return { name: 'admin', id: '1234' };
+				if (user && user.password === password) {
+					return { name: user.name, id: `${user.id}` };
 				} else {
 					throw new Error();
 				}
